@@ -22,3 +22,5 @@ Route::delete('/task/{task}', [App\Http\Controllers\TaskController::class, 'todo
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\TaskController::class, 'todoView'])->name('home');
+
+
