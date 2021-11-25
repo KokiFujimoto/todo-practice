@@ -5,39 +5,48 @@
 @section('content')
 
 <header>
-    <h1 class="mb-5">TODOアプリ</h1>
+    <h1 class="container mb-5">TODOリスト</h1>
 </header>
 <main>
     <section>
-        <h2 class="mb-3">現在のタスク</h2>
-        <!-- タスクの表示 -->
-        <table class="table table-striped table-bordered w-50">
-            <tbody>
-                @if (count($tasks) > 0)
-                @foreach ($tasks as $task)
-                    <tr>
-                        <td>{{ $task->name }}</td>
-                        <td>
-                            <form action="{{ route('todoDelete', ['task' => $task->id]) }}" method="post">
-                                @csrf
-                                @method('delete')
-                                <input type="hidden" name="id" value="{{  $task->id }}">
-                                <button type="submit" class="btn btn-outline-info">削除</button>
-                            </form>
-                        </td>
-                    </tr>
-                @endforeach
-                @endif
-            </tbody>
-        </table>
+        <div class="container">
+            <form action="{{ route('todoCreate') }}" method="post" class="form-inline mt-3 mb-5">
+                @csrf
+                <div class="form-group">
+                    <label class="mr-3" for="task-name">新規タスク</label>
+                    <input type="text" name="name" class="form-control mr-3">
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-danger">登録</button>
+                </div>
+            </form>
+        </div>
+        
     </section>
     <section>
-        <form action="{{ route('todoCreate') }}" method="post" class="form-horizontal mt-3">
-            @csrf
-            新規タスク
-            <input type="text" name="name" class="form-controll">
-            <button type="submit" class="btn btn-outline-dark">登録</button>
-        </form>
+        <div class="container">
+            <h3 class="mb-3">現在のタスク</h3>
+            <!-- タスクの表示 -->
+            <table class="table table-bordered table-hover w-50">
+                <tbody>
+                    @if (count($tasks) > 0)
+                    @foreach ($tasks as $task)
+                        <tr>
+                            <td class="col-sm-8">{{ $task->name }}</td>
+                            <td class="col-sm-4 text-center">
+                                <form action="{{ route('todoDelete', ['task' => $task->id]) }}" method="post">
+                                    @csrf
+                                    @method('delete')
+                                    <input type="hidden" name="id" value="{{  $task->id }}">
+                                    <button type="submit" class="btn btn-outline-info">完了</button>
+                                </form>
+                            </td>
+                        </tr>
+                    @endforeach
+                    @endif
+                </tbody>
+            </table>
+        </div>
     </section>
 </main>
 
