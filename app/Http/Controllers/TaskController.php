@@ -18,12 +18,17 @@ class TaskController extends Controller
         $this->middleware('auth');
     }
 
-    public function todoView(Task $tasks, Request $request)
+    public function todoView(Task $tasks, User $user, Request $request)
     {
         // $tasks = Task::orderBy('created_at', 'asc')->get();
-        $tasks = $request->user()->tasks()->get();
 
-        return view('tasks.index', compact('tasks'));
+        // $tasks = $request->user()->tasks()->get();
+        $tasks = auth()->user()->tasks()->get();
+
+        // $user = $request->user()->find();
+        $user = auth()->user();
+
+        return view('tasks.index', compact('tasks', 'user'));
     }
 
     /**

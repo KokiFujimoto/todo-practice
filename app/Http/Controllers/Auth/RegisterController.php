@@ -66,10 +66,10 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
         $judge = request()->file('avatar');
-        
+
         if (isset($judge)) {
             $avatar = request()->file('avatar')->getClientOriginalName();
-            $request->file('avatar')->storeAs('public/images', $avatar);
+            request()->file('avatar')->storeAs('public/images', $avatar);
 
             $user = User::create([
                 'name' => $data['name'],

@@ -10,6 +10,17 @@
 <main>
     <section>
         <div class="container">
+            <div class="user">
+                <div class="user-icon float-left">
+                    @if ($user->avatar === 'noimage.png')
+                        <img src="{{ asset('storage/images/noimage.png') }}" alt="ユーザー画像" class="d-block mx-auto rounded-circle">
+                        <p class="text-center">{{ $user->name }}</p>
+                    @else
+                        <img src="{{ asset('storage/images/'. $user->avatar) }}" alt="ユーザー画像" class="d-block mx-auto rounded-circle">
+                        <p class="text-center">{{ $user->name }}</p>
+                    @endif
+                </div>
+            </div>
             <form action="{{ route('todoCreate') }}" method="post" class="form-inline mt-3 mb-5">
                 @csrf
                 <div class="form-group">
@@ -19,9 +30,8 @@
                 <div class="form-group">
                     <button type="submit" class="btn btn-danger">登録</button>
                 </div>
-            </form>
+        　　</form>
         </div>
-        
     </section>
     <section>
         <div class="container">
