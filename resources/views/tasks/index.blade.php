@@ -7,16 +7,16 @@
 <header>
     <h1 class="container mb-5">TODOリスト</h1>
 </header>
-<main>
+<main class="d-flex flex-column">
     <section>
         <div class="container">
             <div class="user">
-                <div class="user-icon float-left">
-                    @if ($user->avatar === 'noimage.png')
+                <div class="user-icon float-left mr-5">
+                    @if ($user->avatar == 'noimage')
                         <img src="{{ asset('storage/images/noimage.png') }}" alt="ユーザー画像" class="d-block mx-auto rounded-circle">
                         <p class="text-center">{{ $user->name }}</p>
                     @else
-                        <img src="{{ asset('storage/images/'. $user->avatar) }}" alt="ユーザー画像" class="d-block mx-auto rounded-circle">
+                        <img src="{{ $user->avatar }}" alt="ユーザー画像" class="d-block mx-auto rounded-circle">
                         <p class="text-center">{{ $user->name }}</p>
                     @endif
                 </div>

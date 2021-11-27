@@ -28,6 +28,8 @@ class TaskController extends Controller
         // $user = $request->user()->find();
         $user = auth()->user();
 
+        $avatar = $user->avatar;
+
         return view('tasks.index', compact('tasks', 'user'));
     }
 
