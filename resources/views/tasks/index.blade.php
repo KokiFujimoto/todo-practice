@@ -13,7 +13,7 @@
             <div class="user">
                 <div class="user-icon float-left mr-5">
                     @if ($user->avatar == 'noimage')
-                        <img src="{{ asset('storage/images/noimage.png') }}" alt="ユーザー画像" class="d-block mx-auto rounded-circle">
+                        <img src="https://i.pinimg.com/550x/67/81/e2/6781e2acffe6af95cd30a705714ed653.jpg" alt="ユーザー画像" class="d-block mx-auto rounded-circle">
                         <p class="text-center">{{ $user->name }}</p>
                     @else
                         <img src="{{ $user->avatar }}" alt="ユーザー画像" class="d-block mx-auto rounded-circle">
