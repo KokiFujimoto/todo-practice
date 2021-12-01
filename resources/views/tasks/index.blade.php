@@ -13,11 +13,11 @@
             <div class="user">
                 <div class="user-icon float-left mr-5">
                     @if ($user->avatar == 'noimage')
-                        <img src="https://i.pinimg.com/550x/67/81/e2/6781e2acffe6af95cd30a705714ed653.jpg" alt="ユーザー画像" class="d-block mx-auto rounded-circle">
-                        <p class="text-center">{{ $user->name }}</p>
+                    <img src="https://i.pinimg.com/550x/67/81/e2/6781e2acffe6af95cd30a705714ed653.jpg" alt="ユーザー画像" class="d-block mx-auto rounded-circle">
+                    <p class="text-center">{{ $user->name }}</p>
                     @else
-                        <img src="{{ $user->avatar }}" alt="ユーザー画像" class="d-block mx-auto rounded-circle">
-                        <p class="text-center">{{ $user->name }}</p>
+                    <img src="{{ $user->avatar }}" alt="ユーザー画像" class="d-block mx-auto rounded-circle">
+                    <p class="text-center">{{ $user->name }}</p>
                     @endif
                 </div>
             </div>
@@ -30,7 +30,8 @@
                 <div class="form-group">
                     <button type="submit" class="btn btn-danger">登録</button>
                 </div>
-        　　</form>
+                　　
+            </form>
         </div>
     </section>
     <section>
@@ -41,17 +42,17 @@
                 <tbody>
                     @if (count($tasks) > 0)
                     @foreach ($tasks as $task)
-                        <tr>
-                            <td class="col-sm-8">{{ $task->name }}</td>
-                            <td class="col-sm-4 text-center">
-                                <form action="{{ route('todoDelete', ['task' => $task->id]) }}" method="post">
-                                    @csrf
-                                    @method('delete')
-                                    <input type="hidden" name="id" value="{{  $task->id }}">
-                                    <button type="submit" class="btn btn-outline-info">完了</button>
-                                </form>
-                            </td>
-                        </tr>
+                    <tr>
+                        <td class="col-sm-8">{{ $task->name }}</td>
+                        <td class="col-sm-4 text-center">
+                            <form action="{{ route('todoDelete', ['task' => $task->id]) }}" method="post">
+                                @csrf
+                                @method('delete')
+                                <input type="hidden" name="id" value="{{  $task->id }}">
+                                <button type="submit" class="btn btn-outline-info">完了</button>
+                            </form>
+                        </td>
+                    </tr>
                     @endforeach
                     @endif
                 </tbody>
