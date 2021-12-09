@@ -10030,6 +10030,7 @@ h3 {
   border: solid 1px #6c757d;
   padding: 0.1rem;
   height: 120px;
+  object-fit: cover;
 }
 .user-icon p {
   font-weight: bold;
